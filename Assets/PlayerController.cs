@@ -2,25 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
-    //Create a reference to the RigidBody2D so we can manipulate it
-    Rigidbody2D playerObjects;
+    public GameObject groundchecker;
+    public LayerMask whatIsGround;
 
+    public float maxSpeed = 10.0f;
+    bool IsOnGround = false;
+    // Ablew to manipulate the body
+    Rigidbody2D playerobject;
     // Start is called before the first frame update
     void Start()
     {
-        //Find the RigidBody2D component that is attached to the same object as this script
-        playerObjects = GetComponent<Rigidbody2D>();
+        //Attaches Code to body
+        playerobject = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Create a 'float' that will be equal to the players horizontal input
-        float movementValueX = Input.GetAxis("Horizintal");
+        // Horizontal and Vertical input
+        float movementValueX = Input.GetAxis("Horizontal");
 
-        //Change the X velocity of the RigidBody2D to be equal to the movement value
-        playerObjects.velocity = new Vector2 (movementValueX, playerObjects.velocity.y);
+
+        //Velocity
+        playerobject.velocity = new Vector2(movementValueX * maxSpeed, playerobject.velocity.y);
+
+        isOneGround = Physics2D.OverlapCircle(groundchecker.transform.position, 1.0f, whatIsGround);
+
     }
 }
