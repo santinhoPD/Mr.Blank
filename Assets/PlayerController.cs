@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
 
     public float maxSpeed = 10.0f;
-    bool IsOnGround = false;
+    bool isOnGround = false;
     // Ablew to manipulate the body
     Rigidbody2D playerobject;
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         //Velocity
         playerobject.velocity = new Vector2(movementValueX * maxSpeed, playerobject.velocity.y);
 
-        isOneGround = Physics2D.OverlapCircle(groundchecker.transform.position, 1.0f, whatIsGround);
+        isOnGround = Physics2D.OverlapCircle(groundchecker.transform.position, 1.0f, whatIsGround);
 
     }
 }
