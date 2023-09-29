@@ -24,9 +24,20 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Horizontal and Vertical input
-        float movementValueX = Input.GetAxis("Horizontal");
+        //float movementValueX = Input.GetAxis("Horizontal");
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            maxSpeed = 5.0f;
+        } else
+        {
+            maxSpeed = 30.0f;
+        }
 
+        //create a 'float' that will be equal to the players horizontal iunput
+       //float movementValueX = Input.GetAxis("Horizontal");
 
+        //set movementValueX to 1.0f, so that we always run forward and no longer care about player input
+        float movementValueX = 1.0f;
         //Velocity
         playerobject.velocity = new Vector2(movementValueX * maxSpeed, playerobject.velocity.y);
 
