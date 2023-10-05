@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject groundchecker;
     public LayerMask whatIsGround;
+    public float jumpForce;
 
     public float maxSpeed = 10.0f;
     bool isOnGround = false;
@@ -28,13 +29,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             maxSpeed = 5.0f;
-        } else
+        }
+        else
         {
             maxSpeed = 30.0f;
         }
 
         //create a 'float' that will be equal to the players horizontal iunput
-       //float movementValueX = Input.GetAxis("Horizontal");
+        //float movementValueX = Input.GetAxis("Horizontal");
 
         //set movementValueX to 1.0f, so that we always run forward and no longer care about player input
         float movementValueX = 1.0f;
@@ -43,5 +45,11 @@ public class PlayerController : MonoBehaviour
 
         isOnGround = Physics2D.OverlapCircle(groundchecker.transform.position, 1.0f, whatIsGround);
 
+        if ((isOnGround == true) && (Input.GetAxis("Jump") > 0.0f))
+        {
+            playerobject.AddForce(Vector2.up*jumpForce);
+        }
+        
     }
 }
+    
