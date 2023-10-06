@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            maxSpeed = 30.0f;
+            maxSpeed = 35.0f;
         }
 
         //create a 'float' that will be equal to the players horizontal iunput
