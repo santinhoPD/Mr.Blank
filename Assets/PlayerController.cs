@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
 
     public float maxSpeed = 10.0f;
-    bool isOnGround = false;
+    public bool isOnGround = false;
     // Ablew to manipulate the body
     Rigidbody2D playerobject;
     // Start is called before the first frame update
